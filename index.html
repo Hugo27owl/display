@@ -1,40 +1,157 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome</title>
-    <style>
-        .number-pad {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .number-pad input {
-            width: 2em;
-            font-size: 1.5em;
-            text-align: center;
-            margin: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Setup your TV</h1>
-    <form>
-        <label for="time">Set the time:</label>
-        <div class="number-pad">
-            <input type="number" id="hours" name="hours" min="0" max="23" placeholder="HH">
-            <span>:</span>
-            <input type="number" id="minutes" name="minutes" min="0" max="59" placeholder="MM">
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Display</title>
+        <style>
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+                color: white;
+                text-align: center;
+            }
+            .lock-screen {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                padding: 20px;
+                background-size: cover;
+                background-position: center;
+                transition: background-image 0.5s ease-in-out;
+            }
+            .time {
+                font-size: 80px;
+                margin-top: 20px;
+            }
+            .date {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .profile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile img {
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+            }
+            .profile .name {
+                margin-top: 10px;
+                font-size: 20px;
+            }
+            .profile .status {
+                margin-top: 5px;
+                font-size: 16px;
+            }
+            .background-selector {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+            }
+            .background-selector select {
+                padding: 5px;
+                font-size: 16px;
+                background: rgba(255, 255, 255, 0.9);
+                border: none;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="background-selector">
+            <select id="backgroundSelect">
+                <option value="bg-2.png">Flow</option>
+                <option value="bg-3.png">Shape</option>
+                <option value="bg-4.png">Flower</option>
+                <option value="bg-5.png">Color</option>
+                <option value="bg-6.png">Wave</option>
+                <option value="ert.png">Ripple</option>
+                <option value="teddy green.png">Green</option>
+            </select>
         </div>
-        <br><br>
-        <label for="background">Select background option:</label>
-        <select id="background" name="background">
-            <option value="flower">Ripple</option>
-            <option value="glow">Glow</option>
-            <option value="flow">Flow</option>
-            <option value="fire">Fire</option>
-            <option value="shape">Shape</option>
-        </select>
-    </form>
-</body>
+
+        <div class="lock-screen" id="lockScreen">
+            <div class="date" id="dateDisplay">Monday, 5 June</div>
+            <div class="time" id="timeDisplay">20:35</div>
+            <div class="profile">
+                <img src="path-to-profile-image.png" alt="Profile Picture" />
+                <div class="name">Slashnet Display</div>
+                <div class="status">Beta Preview</div>
+            </div>
+        </div>
+
+        <script>
+            const lockScreen = document.getElementById("lockScreen");
+            const backgroundSelect =
+                document.getElementById("backgroundSelect");
+            const dateDisplay = document.getElementById("dateDisplay");
+            const timeDisplay = document.getElementById("timeDisplay");
+            const profileName = document.querySelector(".profile .name");
+            const profileStatus = document.querySelector(".profile .status");
+
+            function updateTextColor() {
+                if (
+                    backgroundSelect.value === "bg-6.png" ||
+                    backgroundSelect.value === "ert.png"
+                ) {
+                    dateDisplay.style.color = "black";
+                    timeDisplay.style.color = "black";
+                    profileName.style.color = "black";
+                    profileStatus.style.color = "black";
+                } else {
+                    dateDisplay.style.color = "white";
+                    timeDisplay.style.color = "white";
+                    profileName.style.color = "white";
+                    profileStatus.style.color = "white";
+                }
+            }
+
+            backgroundSelect.addEventListener("change", (event) => {
+                lockScreen.style.backgroundImage = `url('${event.target.value}')`;
+                updateTextColor();
+            });
+
+            // Set initial background and font color
+            lockScreen.style.backgroundImage = `url('${backgroundSelect.value}')`;
+            updateTextColor();
+
+            function updateTimeAndDate() {
+                const now = new Date();
+                const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                };
+                const dateString = now.toLocaleDateString(undefined, options);
+                const timeString = now.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+
+                dateDisplay.textContent = dateString;
+                timeDisplay.textContent = timeString;
+            }
+
+            // Update the time and date immediately, then every second
+            updateTimeAndDate();
+            setInterval(updateTimeAndDate, 1000);
+        </script>
+    </body>
 </html>
