@@ -1,35 +1,40 @@
-<!--
-  Hit RUN to see this project in action!
-  
-  This project will auto-refresh as you edit the HTML, CSS and JS. See README.md for more info (including how to disable auto-refresh and install packages).
--->
-
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Slashnet display</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Welcome</title>
+    <style>
+        .number-pad {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .number-pad input {
+            width: 2em;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 5px;
+        }
+    </style>
 </head>
-
 <body>
-  <main>
-    <h1 class="title">Slashnet Display</h1>
-    <p class="description">Get started by clicking "next". Set the <code class="code">time</code> after that.
-                                              🔻
-    </p>
-
-    <section class="grid">
-      <a href="go.html" class='card'>
-        <h2>Next &rarr;</h2>
-        <p>Find tutorials on Replit to learn more.</p>
-      </a>
-
-  
-  <script type="module" src="script.js"></script>
-
+    <h1>Setup your TV</h1>
+    <form>
+        <label for="time">Set the time:</label>
+        <div class="number-pad">
+            <input type="number" id="hours" name="hours" min="0" max="23" placeholder="HH">
+            <span>:</span>
+            <input type="number" id="minutes" name="minutes" min="0" max="59" placeholder="MM">
+        </div>
+        <br><br>
+        <label for="background">Select background option:</label>
+        <select id="background" name="background">
+            <option value="flower">Ripple</option>
+            <option value="glow">Glow</option>
+            <option value="flow">Flow</option>
+            <option value="fire">Fire</option>
+            <option value="shape">Shape</option>
+        </select>
+    </form>
 </body>
-
 </html>
