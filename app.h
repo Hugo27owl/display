@@ -1,2 +1,1 @@
-#install.slashnet_ui
-#install.microsoft.winui3
+#install.slashnet._ui

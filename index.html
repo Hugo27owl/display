@@ -93,6 +93,11 @@
                 <option value="leaf.png">Leaf</option>
                 <option value="Purple.png">Purple</option>
                 <option value="abis.png">Abis</option>
+                <option value="digital.png">Digital</option>
+                <option value="flutter.png">Flutter</option>
+                <option value="LOOP.png">Loop</option>
+                <option value="Square.png">Squares</option>
+                <option value="Yellow.png">Yellow</option>
             </select>
         </div>
 
@@ -102,7 +107,7 @@
             <div class="profile">
                 <img src="PENGIN.png" alt="Profile Picture" />
                 <div class="name">Slashnet Display</div>
-                <div class="status">Beta Preview</div>
+                <div class="status">Beta Preview</div> 
             </div>
         </div>
 
@@ -163,5 +168,65 @@
             updateTimeAndDate();
             setInterval(updateTimeAndDate, 1000);
         </script>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           
+            <style>
+                img {
+                    margin: 10px;
+                    max-width: 100px;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="image-container">
+                <img src="image1.jpg" alt="Image 1">
+                <img src="image2.jpg" alt="Image 2">
+                <img src="image3.jpg" alt="Image 3">
+                <img src="image4.jpg" alt="Image 4">
+            </div>
+
+            <script>
+                function shuffle(array, seed) {
+                    let m = array.length, t, i;
+
+                    while (m) {
+                        i = Math.floor(random(seed) * m--);
+                        t = array[m];
+                        array[m] = array[i];
+                        array[i] = t;
+                    }
+
+                    return array;
+                }
+
+                function random(seed) {
+                    const x = Math.sin(seed++) * 10000;
+                    return x - Math.floor(x);
+                }
+
+                function getSeed() {
+                    // Use the current time as a seed
+                    return new Date().getTime();
+                }
+
+                function shuffleImages() {
+                    const container = document.getElementById('image-container');
+                    const images = Array.from(container.getElementsByTagName('img'));
+                    const seed = getSeed();
+
+                    const shuffledImages = shuffle(images, seed);
+
+                    container.innerHTML = ''; // Clear existing images
+                    shuffledImages.forEach(img => container.appendChild(img));
+                }
+
+                // Shuffle images on page load
+                shuffleImages();
+            </script>
+        </body>
+        </html>
     </body>
 </html>
