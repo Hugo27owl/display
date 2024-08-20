@@ -21,7 +21,7 @@
             .lock-screen {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: space-around;
                 align-items: center;
                 height: 100%;
                 width: 100%;
@@ -87,7 +87,7 @@
                 <option value="clear.png">Clear</option>
                 <option value="Flow.png">Flow</option>
                 <option value="inout.png">In Out</option>
-                <option value="pixel.png">Pixels </option>
+                <option value="pixel.png">Pixels</option>
                 <option value="rings.png">Ring</option>
                 <option value="Rapp.png">Wrap</option>
                 <option value="leaf.png">Leaf</option>
@@ -99,7 +99,7 @@
                 <option value="Yellow.png">Yellow</option>
                 <option value="Overlay.png">Overlay</option>
                 <option value="pingiunreflect.png">Reflect</option>
-                 <option value="Soft.png">Soft</option>
+                <option value="Soft.png">Soft</option>
                 <option value="Utter.png">Utter</option>
                 <option value="Digital Bloom.png">Digital</option>
                 <option value="cylinder.png">Cylinder</option>
@@ -120,7 +120,7 @@
             <div class="profile">
                 <img src="FISHPROF.jpg" alt="Profile Picture" />
                 <div class="name">Slashnet Display</div>
-                <div class="status">Beta Preview</div> 
+                <div class="status">Beta Preview</div>
             </div>
         </div>
 
@@ -181,65 +181,22 @@
             updateTimeAndDate();
             setInterval(updateTimeAndDate, 1000);
         </script>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-           
-            <style>
-                img {
-                    margin: 10px;
-                    max-width: 100px;
-                }
-            </style>
-        </head>
-        <body>
-            <div id="image-container">
-                <img src="image1.jpg" alt="Image 1">
-                <img src="image2.jpg" alt="Image 2">
-                <img src="image3.jpg" alt="Image 3">
-                <img src="image4.jpg" alt="Image 4">
-            </div>
-
-            <script>
-                function shuffle(array, seed) {
-                    let m = array.length, t, i;
-
-                    while (m) {
-                        i = Math.floor(random(seed) * m--);
-                        t = array[m];
-                        array[m] = array[i];
-                        array[i] = t;
-                    }
-
-                    return array;
-                }
-
-                function random(seed) {
-                    const x = Math.sin(seed++) * 10000;
-                    return x - Math.floor(x);
-                }
-
-                function getSeed() {
-                    // Use the current time as a seed
-                    return new Date().getTime();
-                }
-
-                function shuffleImages() {
-                    const container = document.getElementById('image-container');
-                    const images = Array.from(container.getElementsByTagName('img'));
-                    const seed = getSeed();
-
-                    const shuffledImages = shuffle(images, seed);
-
-                    container.innerHTML = ''; // Clear existing images
-                    shuffledImages.forEach(img => container.appendChild(img));
-                }
-
-                // Shuffle images on page load
-                shuffleImages();
-            </script>
-        </body>
-        </html>
     </body>
 </html>
+<!--icon 9-->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="64px" height="64px"
+    viewBox="0 0 64 64">
+  <g fill="none" stroke="#000000" stroke-width="4">
+    <!-- Sync Arrows -->
+    <path d="M44,20 A18,18 0 0,1 20,44" fill="none" stroke="#00AA00" stroke-width="3"/>
+    <path d="M20,44 L18,42" stroke="#00AA00" stroke-width="3"/>
+    <path d="M44,20 L46,22" stroke="#00AA00" stroke-width="3"/>
+
+    <path d="M20,44 A18,18 0 0,1 44,20" fill="none" stroke="#00AA00" stroke-width="3"/>
+    <path d="M44,20 L46,18" stroke="#00AA00" stroke-width="3"/>
+    <path d="M20,44 L18,46" stroke="#00AA00" stroke-width="3"/>
+  </g>
+</svg>

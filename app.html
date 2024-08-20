@@ -1,2 +1,152 @@
-<tittle>app.html</tittle>
-Hi<a href="index.html">
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home UI | Display</title>
+        <link rel="stylesheet" href="app.css" />
+    </head>
+    <body>
+        <div class="control-center">
+            <div class="row">
+                <div class="icon" id="airplane">
+                    <img src="icons/airplane-mode.png" alt="Airplane Mode" />
+                </div>
+                <div class="icon" id="wifi">
+                    <img src="icons/wifi.png" alt="WiFi" />
+                </div>
+                <div class="icon" id="bluetooth">
+                    <img src="icons/bluetooth.png" alt="Bluetooth" />
+                </div>
+                <div class="icon" id="cellular">
+                    <img src="icons/cellular.png" alt="Cellular" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="media-control">
+                    <div class="album-cover">
+                        <img src="icons/album-cover.png" alt="Album Cover" />
+                    </div>
+                    <div class="song-info">
+                        <p class="song-name">Welcome to Home UI</p>
+                        <p class="artist-name">SLASHNET DISPLAY</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="slider" id="brightness"></div>
+                <div class="slider" id="volume"></div>
+            </div>
+            <div class="row">
+                <div class="icon" id="focus">
+                    <img src="icons/focus.png" alt="Focus" />
+                </div>
+                <div class="icon" id="flashlight">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="50px"
+                        height="50px"
+                        viewBox="0 0 64 64"
+                    >
+                        <g fill="none" stroke="#000000" stroke-width="4">
+                            <!-- Outer Gear -->
+                            <circle cx="32" cy="32" r="6" fill="#000000" />
+
+                            <!-- Gear Teeth -->
+                            <path d="M32,16 L32,8" />
+                            <path d="M32,56 L32,48" />
+                            <path d="M16,32 L8,32" />
+                            <path d="M56,32 L48,32" />
+
+                            <path d="M45.25,18.75 L50.25,13.75" />
+                            <path d="M45.25,45.25 L50.25,50.25" />
+                            <path d="M18.75,18.75 L13.75,13.75" />
+                            <path d="M18.75,45.25 L13.75,50.25" />
+
+                            <!-- Inner Gear -->
+                            <circle cx="32" cy="32" r="16" />
+
+                            <!-- Rotating Arrows -->
+                            <path
+                                d="M40,24 A8,8 0 0,1 24,40"
+                                fill="none"
+                                stroke="#00AA00"
+                                stroke-width="3"
+                            />
+                            <path
+                                d="M24,40 L22,38"
+                                stroke="#00AA00"
+                                stroke-width="3"
+                            />
+                            <path
+                                d="M40,24 L38,22"
+                                stroke="#00AA00"
+                                stroke-width="3"
+                            />
+                        </g>
+                    </svg>
+                </div>
+                <div class="icon" id="timer">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="50px"
+                        height="50px"
+                        viewBox="0 0 64 64"
+                    >
+                        <g fill="none" stroke="#000000" stroke-width="4">
+                            <!-- Server Rectangle -->
+                            <rect
+                                x="12"
+                                y="16"
+                                width="40"
+                                height="32"
+                                rx="4"
+                                ry="4"
+                            />
+
+                            <!-- Server Lights -->
+                            <circle cx="20" cy="26" r="2" />
+                            <circle cx="20" cy="34" r="2" />
+
+                            <!-- Checkmark -->
+                            <path d="M28,34 L36,42 L48,26" stroke="#00AA00" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="icon" id="camera">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 100 100"
+                        width="50"
+                        height="50"
+                    >
+                        <!-- Person Silhouette -->
+                        <circle cx="50" cy="30" r="15" fill="gray" />
+                        <!-- Head -->
+                        <ellipse
+                            cx="50"
+                            cy="35"
+                            rx="30"
+                            ry="18"
+                            fill="gray"
+                            transform="scale(1, -1) translate(0, -100)"
+                        />
+                        <!-- Flipped Body -->
+
+                        <!-- Checkmark at the bottom right -->
+                        <path
+                            d="M55 65 L65 75 L80 55"
+                            stroke="green"
+                            stroke-width="5"
+                            fill="none"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
