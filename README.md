@@ -1,26 +1,13 @@
-# HTML, CSS, JS (Auto Refresh)
+# Intro
 
-This template is a starter for building a website with HTML, CSS and JS, powered by [Vite](https://vitejs.dev/). HTML provides the basic structure, CSS controls formatting, and JavaScript controls the behavior of different elements.
+This is a project in HTML,CSS and JavaScript, for a Overpowered Screensaver app with verry basic apps.
 
-Hit run to see this project in action. It will auto-refresh as you edit the HTML, CSS and JS files.
+# Info
+Go to [The Display Website](https://slashnet.framer.ai/display) for more info and the main [Slashnet Website](https://slashnet.framer.ai)
 
-## Disable Auto Refresh
-
-If you find the auto refresh getting in your way, go to [vite.config.js](./vite.config.js) and update it set `hmr` to false to disable hot module reloading (HMR). The full config will look like this:
-
-```js
-export default defineConfig({
-  plugins: [],
-  server: {
-    host: '0.0.0.0',
-    hmr: false, // Change this line to `false` disable auto-refreshing.
-  }
-})
+```TIP: Feel free to edit ! If you can add icons we will be grateful!
 ```
 
-## Packages
-
-Because this template uses Vite to build your code, you can add install and use npm packages. Simple open the Packager tool to search and manage your packages.
 
 ## Learn More
 
