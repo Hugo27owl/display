@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .setting-group {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, input[type="color"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Settings</h1>
+
+    <div class="setting-group">
+        <h2>Display</h2>
+        <label for="background">Background Image:</label>
+        <select id="background">
+            <option value="bg-2.png">Flow</option>
+            <option value="bg-3.png">Shape</option>
+            <option value="bg-4.png">Flower</option>
+            <option value="bg-5.png">Color</option>
+            <option value="bg-6.png">Wave</option>
+            <option value="ert.png">Ripple</option>
+            <option value="teddy green.png">Green</option>
+        </select>
+
+        <label for="textColor">Text Color:</label>
+        <input type="color" id="textColor" value="#FFFFFF">
+    </div>
+
+    <div class="setting-group">
+        <h2>Time Format</h2>
+        <label>
+            <input type="radio" name="timeFormat" value="12" checked> 12-hour
+        </label>
+        <label>
+            <input type="radio" name="timeFormat" value="24"> 24-hour
+        </label>
+    </div>
+
+    <button onclick="saveSettings()">Save Settings</button>
+    <button onclick="goHome()">Home</button>
+
+    <script>
+        function saveSettings() {
+            const background = document.getElementById('background').value;
+            const textColor = document.getElementById('textColor').value;
+            const timeFormat = document.querySelector('input[name="timeFormat"]:checked').value;
+
+            localStorage.setItem('background', background);
+            localStorage.setItem('textColor', textColor);
+            localStorage.setItem('timeFormat', timeFormat);
+
+            alert('Settings saved!');
+        }
+
+        function goHome() {
+            window.location.href = 'app.html';
+        }
+
+        // Load saved settings
+        window.onload = function() {
+            const savedBackground = localStorage.getItem('background');
+            const savedTextColor = localStorage.getItem('textColor');
+            const savedTimeFormat = localStorage.getItem('timeFormat');
+
+            if (savedBackground) document.getElementById('background').value = savedBackground;
+            if (savedTextColor) document.getElementById('textColor').value = savedTextColor;
+            if (savedTimeFormat) document.querySelector(`input[name="timeFormat"][value="${savedTimeFormat}"]`).checked = true;
+        }
+    </script>
+</body>
+</html>

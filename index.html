@@ -29,6 +29,7 @@
                 background-size: cover;
                 background-position: center;
                 transition: background-image 0.5s ease-in-out;
+                position: relative; /* Added to enable absolute positioning within it */
             }
             .time {
                 font-size: 80px;
@@ -42,6 +43,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                transition: all 0.5s ease-in-out; /* Added for smooth position transition */
             }
             .profile img {
                 border-radius: 50%;
@@ -63,6 +65,7 @@
                 padding: 10px;
                 background: rgba(0, 0, 0, 0.5);
                 border-radius: 5px;
+                z-index: 1000; /* Ensures the dropdown is on top */
             }
             .background-selector select {
                 padding: 5px;
@@ -76,48 +79,70 @@
     <body>
         <div class="background-selector">
             <select id="backgroundSelect">
-                <option value="bg-2.png">Flow</option>
+                <option value="homeUI">HomeUI</option>
+                <option value="settings">Settings</option>
+                <hr />
+                <option value="bg-2.png" selected>Flow</option>
+                <!-- Flow as default -->
+                <option value="bg-1.png">Color</option>
                 <option value="bg-3.png">Shape</option>
                 <option value="bg-4.png">Flower</option>
                 <option value="bg-5.png">Color</option>
                 <option value="bg-6.png">Wave</option>
                 <option value="ert.png">Ripple</option>
                 <option value="teddy green.png">Green</option>
+                <hr />
                 <option value="transfer.png">Transfer</option>
                 <option value="clear.png">Clear</option>
                 <option value="Flow.png">Flow</option>
                 <option value="inout.png">In Out</option>
+                <hr />
                 <option value="pixel.png">Pixels</option>
                 <option value="rings.png">Ring</option>
                 <option value="Rapp.png">Wrap</option>
                 <option value="leaf.png">Leaf</option>
                 <option value="Purple.png">Purple</option>
                 <option value="abis.png">Abis</option>
-                <option value="flutter.png">Flutter</option>
+                <hr />
+                <option value="Flutter.png">Flutter</option>
                 <option value="LOOP.png">Loop</option>
                 <option value="Square.png">Squares</option>
+                <hr />
                 <option value="Yellow.png">Yellow</option>
                 <option value="Overlay.png">Overlay</option>
-                <option value="pingiunreflect.png">Reflect</option>
-                <option value="Soft.png">Soft</option>
                 <option value="Utter.png">Utter</option>
                 <option value="Digital Bloom.png">Digital</option>
                 <option value="cylinder.png">Cylinder</option>
-                <option value="bubble.png">Bubble</option>
-                <option value="glownew.jpg">Glow</option>
+                <hr />
                 <option value="bard.png">Close Up</option>
                 <option value="move.png">Move</option>
                 <option value="Night.png">Night</option>
                 <option value="TWIRL.png">Twirl</option>
                 <option value="Up and Over.png">Up and Over</option>
                 <option value="paper.png">Layer</option>
+                <option value="fit.png">Fit</option>
+                <option value="fold.png">Fold</option>
+                <option value="medal.png">Medal</option>
+                <option value="wing.png">Fit</option>
+                <option value="climb.png">Climb</option>
+                <hr />
+                <option value="drop.png">Droplet</option>
+                <option value="light world.png">Emerse</option>
+                <option value="utopia.png">Utopia</option>
+                <option value="lines.png">Lines</option>
+                <option value="to.png">To</option>
+                <option value="pingiunreflect.png">Reflect</option>
+                <option value="Soft.png">Soft</option>
+                <option value="bubble.png">Bubble</option>
+                <option value="glownew.jpg">Glow</option>
+                <!-- Added Settings option -->
             </select>
         </div>
 
         <div class="lock-screen" id="lockScreen">
             <div class="date" id="dateDisplay">Monday, 5 June</div>
             <div class="time" id="timeDisplay">20:35</div>
-            <div class="profile">
+            <div class="profile" id="profile">
                 <img src="FISHPROF.jpg" alt="Profile Picture" />
                 <div class="name">Slashnet Display</div>
                 <div class="status">Beta Preview</div>
@@ -130,34 +155,54 @@
                 document.getElementById("backgroundSelect");
             const dateDisplay = document.getElementById("dateDisplay");
             const timeDisplay = document.getElementById("timeDisplay");
-            const profileName = document.querySelector(".profile .name");
-            const profileStatus = document.querySelector(".profile .status");
+            const profile = document.getElementById("profile");
 
             function updateTextColor() {
                 if (
                     backgroundSelect.value === "bg-6.png" ||
-                    backgroundSelect.value === "ert.png"
+                    backgroundSelect.value === "ert.png" ||
+                    backgroundSelect.value === "pingiunreflect.png"
                 ) {
                     dateDisplay.style.color = "black";
                     timeDisplay.style.color = "black";
-                    profileName.style.color = "black";
-                    profileStatus.style.color = "black";
+                    profile.style.color = "black";
                 } else {
                     dateDisplay.style.color = "white";
                     timeDisplay.style.color = "white";
-                    profileName.style.color = "white";
-                    profileStatus.style.color = "white";
+                    profile.style.color = "white";
                 }
             }
 
+            function updateProfilePosition() {
+                if (backgroundSelect.value === "pingiunreflect.png") {
+                    profile.style.position = "absolute";
+                    profile.style.bottom = "20px";
+                    profile.style.left = "20px";
+                } else {
+                    profile.style.position = "static";
+                    profile.style.bottom = "auto";
+                    profile.style.left = "auto";
+                }
+            }
+
+            // If you want to add new  routes, just add an else/if with the name of the selection and add the route using window.location.href
             backgroundSelect.addEventListener("change", (event) => {
-                lockScreen.style.backgroundImage = `url('${event.target.value}')`;
-                updateTextColor();
+                if (event.target.value === "homeUI") {
+                    window.location.href = "app.html";
+                } else if (event.target.value === "settings") {
+                    window.location.href = "apps/settings.html"; // Redirect to SETTINGS.html
+                } else {
+                    lockScreen.style.backgroundImage = `url('${event.target.value}')`;
+                    updateTextColor();
+                    updateProfilePosition();
+                }
             });
 
-            // Set initial background and font color
+            // Set initial background, font color, and profile position
+            backgroundSelect.value = "bg-2.png"; // Set Flow as default selected value
             lockScreen.style.backgroundImage = `url('${backgroundSelect.value}')`;
             updateTextColor();
+            updateProfilePosition();
 
             function updateTimeAndDate() {
                 const now = new Date();
@@ -166,7 +211,7 @@
                     year: "numeric",
                     month: "long",
                     day: "numeric",
-                };
+                }
                 const dateString = now.toLocaleDateString(undefined, options);
                 const timeString = now.toLocaleTimeString([], {
                     hour: "2-digit",
@@ -176,6 +221,20 @@
                 dateDisplay.textContent = dateString;
                 timeDisplay.textContent = timeString;
             }
+            window.onload = function() {
+            const savedBackground = localStorage.getItem('background');
+            const savedTextColor = localStorage.getItem('textColor');
+
+            if (savedBackground) {
+                lockScreen.style.backgroundImage = url('${savedBackground}');
+                backgroundSelect.value = savedBackground;
+            }
+            if (savedTextColor) {
+                dateDisplay.style.color = savedTextColor;
+                timeDisplay.style.color = savedTextColor;
+                profileName.style.color = savedTextColor;
+                profileStatus.style.color = savedTextColor;
+            }
 
             // Update the time and date immediately, then every second
             updateTimeAndDate();
@@ -183,20 +242,3 @@
         </script>
     </body>
 </html>
-<!--icon 9-->
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="64px" height="64px"
-    viewBox="0 0 64 64">
-  <g fill="none" stroke="#000000" stroke-width="4">
-    <!-- Sync Arrows -->
-    <path d="M44,20 A18,18 0 0,1 20,44" fill="none" stroke="#00AA00" stroke-width="3"/>
-    <path d="M20,44 L18,42" stroke="#00AA00" stroke-width="3"/>
-    <path d="M44,20 L46,22" stroke="#00AA00" stroke-width="3"/>
-
-    <path d="M20,44 A18,18 0 0,1 44,20" fill="none" stroke="#00AA00" stroke-width="3"/>
-    <path d="M44,20 L46,18" stroke="#00AA00" stroke-width="3"/>
-    <path d="M20,44 L18,46" stroke="#00AA00" stroke-width="3"/>
-  </g>
-</svg>

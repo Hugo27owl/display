@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClockApp</title>
+    <h1>ClockApp</h1>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .clock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time, .timer, .stopwatch, .alarm {
+            margin: 10px 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+        }
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="time" id="time"></div>
+        <div class="timer" id="timer">00:00:00</div>
+        <div class="stopwatch" id="stopwatch">00:00:00</div>
+        <div class="alarm" id="alarm"></div>
+        <div class="buttons">
+            <button onclick="startTimer()">Start Timer</button>
+            <button onclick="stopTimer()">Stop Timer</button>
+            <button onclick="resetTimer()">Reset Timer</button>
+            <button onclick="startStopwatch()">Start Stopwatch</button>
+            <button onclick="stopStopwatch()">Stop Stopwatch</button>
+            <button onclick="resetStopwatch()">Reset Stopwatch</button>
+            <button onclick="setAlarm()">Set Alarm</button>
+        </div>
+    </div>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('time').textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        let timerInterval;
+        let stopwatchInterval;
+        let timerSeconds = 0;
+        let stopwatchSeconds = 0;
+        let alarmTime;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timerSeconds++;
+                document.getElementById('timer').textContent = new Date(timerSeconds * 1000).toISOString().substr(11, 8);
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function resetTimer() {
+            timerSeconds = 0;
+            document.getElementById('timer').textContent = '00:00:00';
+        }
+
+        function startStopwatch() {
+            stopwatchInterval = setInterval(() => {
+                stopwatchSeconds++;
+                document.getElementById('stopwatch').textContent = new Date(stopwatchSeconds * 1000).toISOString().substr(11, 8);
+            }, 1000);
+        }
+
+        function stopStopwatch() {
+            clearInterval(stopwatchInterval);
+        }
+
+        function resetStopwatch() {
+            stopwatchSeconds = 0;
+            document.getElementById('stopwatch').textContent = '00:00:00';
+        }
+
+        function setAlarm() {
+            const now = new Date();
+            alarmTime = new Date(now.getTime() + 5000); // set alarm to 5 seconds later for demo
+            document.getElementById('alarm').textContent = `Alarm set for ${alarmTime.toLocaleTimeString()}`;
+        }
+
+        setInterval(() => {
+            if (alarmTime && new Date() >= alarmTime) {
+                alert('Alarm ringing!');
+                alarmTime = null;
+                document.getElementById('alarm').textContent = '';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
