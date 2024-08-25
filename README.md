@@ -1,6 +1,6 @@
 # Intro
 
-This is a project in HTML,CSS and JavaScript, for a Overpowered Screensaver app with verry basic apps.
+This is a project in HTML, CSS and JavaScript, for a Overpowered Screensaver app with verry basic apps.
 
 # Info
 Go to [The Display Website](https://slashnet.framer.ai/display) *--BTW the Display website is still in beta--* for more info and the main [Slashnet Website](https://slashnet.framer.ai)
