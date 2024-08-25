@@ -1,8 +1,9 @@
 # Display Credits 
-## Developer section 
+## Developer Credits
 #### IDE Used: *Replit*
 #### AI used: *Claude 3.5 Sonnet*, *GPT-4o* and *GPT-40-mini*
 #### Language used: *HTML**, *CSS** and *JavaScript*** with Vite
+#### Git used: *GitHub* (*Microsoft*)
 
 ###### * *H*yper *T*ext *M*arkup *L*anguage, *C*ascading *S*tyle *S*heets
 ###### ** Not do be confused with *Java*, Also known as *JS*
