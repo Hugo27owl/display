@@ -11,8 +11,7 @@ Go to [The Display Website](https://slashnet.framer.ai/display) *--BTW the Displ
 
 ## Learn More
 
-Check out [the vite docs](https://vitejs.dev) to learn more about configuring a frontend application.
-##### That was to many "I"s!!!
+Check out [the vite docs](https://vitejs.dev) to learn more about configuring a frontend application 
 
 
 
@@ -76,4 +75,4 @@ Check out [the vite docs](https://vitejs.dev) to learn more about configuring a 
 
 
 
-###### bye
+###### Thanks!
